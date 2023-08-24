@@ -1,0 +1,50 @@
+.landing-main-div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+}
+
+.circle {
+    width: 40rem;
+    height: 25rem;
+    background-color: rgb(26, 156, 6);
+    border-radius: 50%;
+    position: absolute;
+    top: -16.3rem;
+}
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cardimg{
+    width: 5rem;
+    height: 5rem;
+    margin-top: 5px;
+}
+
+.logodiv{
+    z-index: 1;
+    margin-bottom: 13rem;
+    margin-top: 3rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.card{
+    width: 18rem;
+    background-color: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    height: 11rem;
+}
+
+.card:hover{
+    background-color: rgb(251, 248, 248);
+}

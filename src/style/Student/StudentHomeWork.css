@@ -1,0 +1,9 @@
+.studenthomework-main-div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.newline{
+    width: 100%;
+}

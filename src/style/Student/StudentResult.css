@@ -1,0 +1,12 @@
+.studentresultcard{
+    width:25rem;
+    height: 9.5rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.studdentresult-main-div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
