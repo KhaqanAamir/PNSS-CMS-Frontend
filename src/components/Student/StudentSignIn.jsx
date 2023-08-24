@@ -6,7 +6,6 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import schoollogo from '../../Utils/School Logo.jpg'
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import '../../style/Student/SignIn.css'
 import ActiveStudentContext from "./StudentContext/ActiveStudentContext.js";
@@ -15,7 +14,7 @@ const StudentSignIn = () => {
   const [username,setusername]=useState('')
   const [password,setpassword]=useState('')
   const history=useNavigate()
-  const {activestudent}=useContext(ActiveStudentContext)
+  const {login,getstudent}=useContext(ActiveStudentContext)
 
   const onchangeusername=(e)=>{
     setusername(e.target.value)
@@ -35,30 +34,22 @@ const StudentSignIn = () => {
 
   const onSubmit=async(event)=>{
     event.preventDefault()
-
-    const response=await axios.post('https://pnss-cms.onrender.com/api/v1/auth/Student/login',data)
-    .then((response)=>{return response.data});
-    localStorage.setItem('authToken', response.AuthToken);
+    try{
+     await login(data)
+    
 
     const token=localStorage.getItem('authToken')
-    console.log('Token:', token); // Make sure the token is what you expect
 
-    if(token){
-        const response = await fetch("https://pnss-cms.onrender.com/api/v1/auth/Student/getuser", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "AuthToken":localStorage.getItem('authToken')
-          },
-        });
-        const students = await response.json();
-         
-        activestudent(students)
-        // localStorage.setItem("studentdetails",student);
-        
+    if(token){      
+
+      await getstudent();
+
+      history('/student/home')
     }
-
-    history('/student/home')
+  }
+  catch(error){
+    console.log(error)
+  }
 
   }
 
